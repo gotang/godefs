@@ -1,0 +1,392 @@
+// Created by cgo -godefs - DO NOT EDIT
+// cgo -godefs _fb_h.go
+
+package fb
+
+import (
+	"github.com/gotang/godefs"
+	"unsafe"
+)
+
+var (
+	FBIO_CURSOR		int
+	FBIOGET_VBLANK		int
+	FBIO_WAITFORVSYNC	int
+)
+
+func init() {
+	FBIO_CURSOR = godefs.IOWR('F', 0x08, int(unsafe.Sizeof(Fb_cursor{})))
+	FBIOGET_VBLANK = godefs.IOR('F', 0x12, int(unsafe.Sizeof(Fb_vblank{})))
+	FBIO_WAITFORVSYNC = godefs.IOW('F', 0x20, int(unsafe.Sizeof(uint32(0))))
+}
+
+const FB_MAX int = 0x20
+
+const FBIOGET_VSCREENINFO uintptr = 0x4600
+const FBIOPUT_VSCREENINFO uintptr = 0x4601
+const FBIOGET_FSCREENINFO uintptr = 0x4602
+const FBIOGETCMAP uintptr = 0x4604
+const FBIOPUTCMAP uintptr = 0x4605
+const FBIOPAN_DISPLAY uintptr = 0x4606
+
+const FBIOGET_CON2FBMAP uintptr = 0x460f
+const FBIOPUT_CON2FBMAP uintptr = 0x4610
+const FBIOBLANK uintptr = 0x4611
+
+const FBIO_ALLOC uintptr = 0x4613
+const FBIO_FREE uintptr = 0x4614
+const FBIOGET_GLYPH uintptr = 0x4615
+const FBIOGET_HWCINFO uintptr = 0x4616
+const FBIOPUT_MODEINFO uintptr = 0x4617
+const FBIOGET_DISPINFO uintptr = 0x4618
+
+const (
+	FB_TYPE_PACKED_PIXELS	= iota
+	FB_TYPE_PLANES
+	FB_TYPE_INTERLEAVED_PLANES
+	FB_TYPE_TEXT
+	FB_TYPE_VGA_PLANES
+	FB_TYPE_FOURCC
+)
+
+const (
+	FB_AUX_TEXT_MDA		= 0
+	FB_AUX_TEXT_CGA		= 1
+	FB_AUX_TEXT_S3_MMIO	= 2
+	FB_AUX_TEXT_MGA_STEP16	= 3
+	FB_AUX_TEXT_MGA_STEP8	= 4
+	FB_AUX_TEXT_SVGA_GROUP	= 8
+	FB_AUX_TEXT_SVGA_MASK	= 7
+	FB_AUX_TEXT_SVGA_STEP2	= 8
+	FB_AUX_TEXT_SVGA_STEP4	= 9
+	FB_AUX_TEXT_SVGA_STEP8	= 10
+	FB_AUX_TEXT_SVGA_STEP16	= 11
+	FB_AUX_TEXT_SVGA_LAST	= 15
+)
+
+const (
+	FB_AUX_VGA_PLANES_VGA4	= iota
+	FB_AUX_VGA_PLANES_CFB4
+	FB_AUX_VGA_PLANES_CFB8
+)
+
+const (
+	FB_VISUAL_MONO01	= iota
+	FB_VISUAL_MONO10
+	FB_VISUAL_TRUECOLOR
+	FB_VISUAL_PSEUDOCOLOR
+	FB_VISUAL_DIRECTCOLOR
+	FB_VISUAL_STATIC_PSEUDOCOLOR
+	FB_VISUAL_FOURCC
+)
+
+const (
+	FB_ACCEL_NONE			= 0
+	FB_ACCEL_ATARIBLITT		= 1
+	FB_ACCEL_AMIGABLITT		= 2
+	FB_ACCEL_S3_TRIO64		= 3
+	FB_ACCEL_NCR_77C32BLT		= 4
+	FB_ACCEL_S3_VIRGE		= 5
+	FB_ACCEL_ATI_MACH64GX		= 6
+	FB_ACCEL_DEC_TGA		= 7
+	FB_ACCEL_ATI_MACH64CT		= 8
+	FB_ACCEL_ATI_MACH64VT		= 9
+	FB_ACCEL_ATI_MACH64GT		= 10
+	FB_ACCEL_SUN_CREATOR		= 11
+	FB_ACCEL_SUN_CGSIX		= 12
+	FB_ACCEL_SUN_LEO		= 13
+	FB_ACCEL_IMS_TWINTURBO		= 14
+	FB_ACCEL_3DLABS_PERMEDIA2	= 15
+	FB_ACCEL_MATROX_MGA2064W	= 16
+	FB_ACCEL_MATROX_MGA1064SG	= 17
+	FB_ACCEL_MATROX_MGA2164W	= 18
+	FB_ACCEL_MATROX_MGA2164W_AGP	= 19
+	FB_ACCEL_MATROX_MGAG100		= 20
+	FB_ACCEL_MATROX_MGAG200		= 21
+	FB_ACCEL_SUN_CG14		= 22
+	FB_ACCEL_SUN_BWTWO		= 23
+	FB_ACCEL_SUN_CGTHREE		= 24
+	FB_ACCEL_SUN_TCX		= 25
+	FB_ACCEL_MATROX_MGAG400		= 26
+	FB_ACCEL_NV3			= 27
+	FB_ACCEL_NV4			= 28
+	FB_ACCEL_NV5			= 29
+	FB_ACCEL_CT_6555x		= 30
+	FB_ACCEL_3DFX_BANSHEE		= 31
+	FB_ACCEL_ATI_RAGE128		= 32
+	FB_ACCEL_IGS_CYBER2000		= 33
+	FB_ACCEL_IGS_CYBER2010		= 34
+	FB_ACCEL_IGS_CYBER5000		= 35
+	FB_ACCEL_SIS_GLAMOUR		= 36
+	FB_ACCEL_3DLABS_PERMEDIA3	= 37
+	FB_ACCEL_ATI_RADEON		= 38
+	FB_ACCEL_I810			= 39
+	FB_ACCEL_SIS_GLAMOUR_2		= 40
+	FB_ACCEL_SIS_XABRE		= 41
+	FB_ACCEL_I830			= 42
+	FB_ACCEL_NV_10			= 43
+	FB_ACCEL_NV_20			= 44
+	FB_ACCEL_NV_30			= 45
+	FB_ACCEL_NV_40			= 46
+	FB_ACCEL_XGI_VOLARI_V		= 47
+	FB_ACCEL_XGI_VOLARI_Z		= 48
+	FB_ACCEL_OMAP1610		= 49
+	FB_ACCEL_TRIDENT_TGUI		= 50
+	FB_ACCEL_TRIDENT_3DIMAGE	= 51
+	FB_ACCEL_TRIDENT_BLADE3D	= 52
+	FB_ACCEL_TRIDENT_BLADEXP	= 53
+	FB_ACCEL_CIRRUS_ALPINE		= 53
+	FB_ACCEL_NEOMAGIC_NM2070	= 90
+	FB_ACCEL_NEOMAGIC_NM2090	= 91
+	FB_ACCEL_NEOMAGIC_NM2093	= 92
+	FB_ACCEL_NEOMAGIC_NM2097	= 93
+	FB_ACCEL_NEOMAGIC_NM2160	= 94
+	FB_ACCEL_NEOMAGIC_NM2200	= 95
+	FB_ACCEL_NEOMAGIC_NM2230	= 96
+	FB_ACCEL_NEOMAGIC_NM2360	= 97
+	FB_ACCEL_NEOMAGIC_NM2380	= 98
+	FB_ACCEL_PXA3XX			= 99
+)
+
+const (
+	FB_ACCEL_SAVAGE4	= 0x80
+	FB_ACCEL_SAVAGE3D	= 0x81
+	FB_ACCEL_SAVAGE3D_MV	= 0x82
+	FB_ACCEL_SAVAGE2000	= 0x83
+	FB_ACCEL_SAVAGE_MX_MV	= 0x84
+	FB_ACCEL_SAVAGE_MX	= 0x85
+	FB_ACCEL_SAVAGE_IX_MV	= 0x86
+	FB_ACCEL_SAVAGE_IX	= 0x87
+	FB_ACCEL_PROSAVAGE_PM	= 0x88
+	FB_ACCEL_PROSAVAGE_KM	= 0x89
+	FB_ACCEL_S3TWISTER_P	= 0x8a
+	FB_ACCEL_S3TWISTER_K	= 0x8b
+	FB_ACCEL_SUPERSAVAGE	= 0x8c
+	FB_ACCEL_PROSAVAGE_DDR	= 0x8d
+	FB_ACCEL_PROSAVAGE_DDRK	= 0x8e
+	FB_ACCEL_PUV3_UNIGFX	= 0xa0
+)
+
+const FB_CAP_FOURCC = 1
+
+type Fb_fix_screeninfo struct {
+	Id		[16]uint8
+	Smem_start	uint32
+	Smem_len	uint32
+	Type		uint32
+	Type_aux	uint32
+	Visual		uint32
+	Xpanstep	uint16
+	Ypanstep	uint16
+	Ywrapstep	uint16
+	Pad_cgo_0	[2]byte
+	Line_length	uint32
+	Mmio_start	uint32
+	Mmio_len	uint32
+	Accel		uint32
+	Capabilities	uint16
+	Reserved	[2]uint16
+	Pad_cgo_1	[2]byte
+}
+
+type Fb_bitfield struct {
+	Offset	uint32
+	Length	uint32
+	Right	uint32
+}
+
+const (
+	FB_NONSTD_HAM		= 1
+	FB_NONSTD_REV_PIX_IN_B	= 2
+)
+
+const (
+	FB_ACTIVATE_NOW		= 0
+	FB_ACTIVATE_NXTOPEN	= 1
+	FB_ACTIVATE_TEST	= 2
+	FB_ACTIVATE_MASK	= 15
+
+	FB_ACTIVATE_VBL		= 16
+	FB_CHANGE_CMAP_VBL	= 32
+	FB_ACTIVATE_ALL		= 64
+	FB_ACTIVATE_FORCE	= 128
+	FB_ACTIVATE_INV_MODE	= 256
+
+	FB_ACCELF_TEXT	= 1
+)
+
+const (
+	FB_SYNC_HOR_HIGH_ACT	= 1
+	FB_SYNC_VERT_HIGH_ACT	= 2
+	FB_SYNC_EXT		= 4
+	FB_SYNC_COMP_HIGH_ACT	= 8
+	FB_SYNC_BROADCAST	= 16
+
+	FB_SYNC_ON_GREEN	= 32
+
+	FB_VMODE_NONINTERLACED	= 0
+	FB_VMODE_INTERLACED	= 1
+	FB_VMODE_DOUBLE		= 2
+	FB_VMODE_ODD_FLD_FIRST	= 4
+	FB_VMODE_MASK		= 255
+
+	FB_VMODE_YWRAP		= 256
+	FB_VMODE_SMOOTH_XPAN	= 512
+	FB_VMODE_CONUPDATE	= 512
+
+	FB_ROTATE_UR	= 0
+	FB_ROTATE_CW	= 1
+	FB_ROTATE_UD	= 2
+	FB_ROTATE_CCW	= 3
+)
+
+type Fb_var_screeninfo struct {
+	Xres		uint32
+	Yres		uint32
+	Xres_virtual	uint32
+	Yres_virtual	uint32
+	Xoffset		uint32
+	Yoffset		uint32
+	Bits_per_pixel	uint32
+	Grayscale	uint32
+	Red		Fb_bitfield
+	Green		Fb_bitfield
+	Blue		Fb_bitfield
+	Transp		Fb_bitfield
+	Nonstd		uint32
+	Activate	uint32
+	Height		uint32
+	Width		uint32
+	Accel_flags	uint32
+	Pixclock	uint32
+	Left_margin	uint32
+	Right_margin	uint32
+	Upper_margin	uint32
+	Lower_margin	uint32
+	Hsync_len	uint32
+	Vsync_len	uint32
+	Sync		uint32
+	Vmode		uint32
+	Rotate		uint32
+	Colorspace	uint32
+	Reserved	[4]uint32
+}
+
+type Fb_cmap struct {
+	Start	uint32
+	Len	uint32
+	Red	*uint16
+	Green	*uint16
+	Blue	*uint16
+	Transp	*uint16
+}
+
+type Fb_con2fbmap struct {
+	Console		uint32
+	Framebuffer	uint32
+}
+
+const (
+	VESA_NO_BLANKING	= iota
+	VESA_VSYNC_SUSPEND
+	VESA_HSYNC_SUSPEND
+	VESA_POWERDOWN
+)
+
+const (
+	FB_BLANK_UNBLANK	= VESA_NO_BLANKING
+
+	FB_BLANK_NORMAL	= VESA_NO_BLANKING + 1
+
+	FB_BLANK_VSYNC_SUSPEND	= VESA_VSYNC_SUSPEND + 1
+
+	FB_BLANK_HSYNC_SUSPEND	= VESA_HSYNC_SUSPEND + 1
+
+	FB_BLANK_POWERDOWN	= VESA_POWERDOWN + 1
+)
+
+const (
+	FB_VBLANK_VBLANKING	= 0x001
+	FB_VBLANK_HBLANKING	= 0x002
+	FB_VBLANK_HAVE_VBLANK	= 0x004
+	FB_VBLANK_HAVE_HBLANK	= 0x008
+	FB_VBLANK_HAVE_COUNT	= 0x010
+	FB_VBLANK_HAVE_VCOUNT	= 0x020
+	FB_VBLANK_HAVE_HCOUNT	= 0x040
+	FB_VBLANK_VSYNCING	= 0x080
+	FB_VBLANK_HAVE_VSYNC	= 0x100
+)
+
+type Fb_vblank struct {
+	Flags		uint32
+	Count		uint32
+	Vcount		uint32
+	Hcount		uint32
+	Reserved	[4]uint32
+}
+
+const (
+	ROP_COPY	= 0
+	ROP_XOR		= 1
+)
+
+type Fb_copyarea struct {
+	Dx	uint32
+	Dy	uint32
+	Width	uint32
+	Height	uint32
+	Sx	uint32
+	Sy	uint32
+}
+
+type Fb_fillrect struct {
+	Dx	uint32
+	Dy	uint32
+	Width	uint32
+	Height	uint32
+	Color	uint32
+	Rop	uint32
+}
+
+type Fb_image struct {
+	Dx		uint32
+	Dy		uint32
+	Width		uint32
+	Height		uint32
+	Fg_color	uint32
+	Bg_color	uint32
+	Depth		uint8
+	Pad_cgo_0	[3]byte
+	Data		*uint8
+	Cmap		Fb_cmap
+}
+
+const (
+	FB_CUR_SETIMAGE	= 0x01
+	FB_CUR_SETPOS	= 0x02
+	FB_CUR_SETHOT	= 0x04
+	FB_CUR_SETCMAP	= 0x08
+	FB_CUR_SETSHAPE	= 0x10
+	FB_CUR_SETSIZE	= 0x20
+	FB_CUR_SETALL	= 0xFF
+)
+
+type Fbcurpos struct {
+	X	uint16
+	Y	uint16
+}
+
+type Fb_cursor struct {
+	Set		uint16
+	Enable		uint16
+	Rop		uint16
+	Pad_cgo_0	[2]byte
+	Mask		*uint8
+	Hot		Fbcurpos
+	Image		Fb_image
+}
+
+const (
+	FB_BACKLIGHT_LEVELS	= 128
+	FB_BACKLIGHT_MAX	= 0xFF
+)
