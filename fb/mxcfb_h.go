@@ -1,5 +1,5 @@
 // Created by cgo -godefs - DO NOT EDIT
-// cgo -godefs /home/gotang/windows/GOSHINCO/src/github.com/gotang/godefs/fb/_mxcfb_h.go
+// cgo -godefs _mxcfb_h.go
 
 package fb
 
