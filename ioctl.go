@@ -6,7 +6,7 @@ import (
 	"unsafe"
 )
 
-func ioctl(fd, name uintptr, data interface{}) error {
+func Ioctl(fd, name uintptr, data interface{}) error {
 	var v uintptr
 
 	switch dd := data.(type) {
